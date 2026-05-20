@@ -29,12 +29,12 @@ const PROJECTS = [
   { idx: '002', year: '2024',    place: 'Buus',     type: 'Baueingabe',         sub: 'Sanierung MFH' },
   { idx: '003', year: '2024',    place: 'Altwis',   type: 'Baueingabe',         sub: 'Umgebungsgestaltung · Hanglage' },
   { idx: '004', year: '2023',    place: 'Root',     type: 'Baueingabe',         sub: 'Planung Wintergarten EFH' },
-  { idx: '005', year: '2023',    place: 'Döttigen', type: 'Machbarkeitsstudie', sub: 'Standortanalyse' },
+  { idx: '005', year: '2023',    place: 'Doettigen', type: 'Machbarkeitsstudie', sub: 'Standortanalyse' },
   { idx: '006', year: '2023',    place: 'Eglisau',  type: 'Machbarkeitsstudie', sub: 'Standortanalyse' },
 ]
 
 const STUDIES = [
-  { n: '01', place: 'Döttigen' },
+  { n: '01', place: 'Doettigen' },
   { n: '02', place: 'Wohlen' },
   { n: '03', place: 'Wil AG' },
   { n: '04', place: 'Ehrendingen' },
