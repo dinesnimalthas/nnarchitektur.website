@@ -1,6 +1,6 @@
-﻿/* ─────────────────────────────────────────────────────
-   nnarchitektur · Editorial Architecture
-   ───────────────────────────────────────────────────── */
+/* -----------------------------------------------------
+   nnarchitektur � Editorial Architecture
+   ----------------------------------------------------- */
 
 :root {
   --bg:   #0C0C0C;
@@ -35,56 +35,84 @@ ul { list-style: none; }
 .rv-h { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .rv-v { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
 
-/* ═══════════════════════════════════════
+/* ---------------------------------------
    NAV
-═══════════════════════════════════════ */
+--------------------------------------- */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.25rem var(--g);
-  background: rgba(12,12,12,.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  padding: 1.1rem var(--g);
+  background: rgba(12,12,12,.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--bdr);
+}
+/* left side: logo + sub-label */
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
 }
 .nav-logo {
   font-family: var(--disp);
-  font-size: 1.6rem;
+  font-size: 2rem;
   letter-spacing: .06em;
   line-height: 1;
 }
 .nav-logo em { font-style: normal; color: var(--acc); }
-.nav-links { display: flex; gap: 2.5rem; }
+.nav-brand-sub {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,.25);
+  padding-left: 1rem;
+  border-left: 1px solid var(--bdr);
+}
+/* center links */
+.nav-links { display: flex; gap: 2.8rem; }
 .nav-links a {
   font-family: var(--mono);
-  font-size: .62rem;
+  font-size: .7rem;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--mut);
+  color: rgba(240,237,230,.5);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
   transition: color .2s;
 }
 .nav-links a:hover { color: var(--fg); }
+.nav-link-num {
+  font-size: .72rem;
+  color: var(--acc);
+  opacity: .7;
+  letter-spacing: .1em;
+}
+/* CTA � filled terracotta */
 .nav-cta {
   font-family: var(--mono);
-  font-size: .62rem;
+  font-size: .7rem;
   letter-spacing: .14em;
   text-transform: uppercase;
-  padding: .55rem 1.3rem;
-  border: 1px solid var(--bdr);
-  transition: background .2s, border-color .2s, color .2s;
+  padding: .6rem 1.5rem;
+  background: var(--acc);
+  color: var(--fg);
+  border: 1px solid var(--acc);
+  transition: background .2s, opacity .2s;
 }
-.nav-cta:hover { background: var(--acc); border-color: var(--acc); color: var(--fg); }
+.nav-cta:hover { opacity: .82; }
 
-/* ═══════════════════════════════════════
-   HERO — SPLIT SCREEN
-═══════════════════════════════════════ */
+/* ---------------------------------------
+   HERO � SPLIT SCREEN
+--------------------------------------- */
 #hero {
   display: grid;
   grid-template-columns: 38fr 62fr;
   min-height: 100svh;
 }
 
-/* LEFT — dark */
+/* LEFT � dark */
 .hero-l {
   background: var(--bg);
   color: var(--fg);
@@ -113,14 +141,14 @@ ul { list-style: none; }
 }
 .hl-bot p {
   font-family: var(--mono);
-  font-size: .6rem;
+  font-size: .74rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: rgba(240,237,230,.26);
   line-height: 2.1;
 }
 
-/* RIGHT — light cream */
+/* RIGHT � light cream */
 .hero-r {
   background: var(--fg);
   color: var(--bg);
@@ -170,9 +198,9 @@ ul { list-style: none; }
 }
 .hr-cta:hover { background: #2a2a2a; }
 
-/* ═══════════════════════════════════════
+/* ---------------------------------------
    STATS BAR
-═══════════════════════════════════════ */
+--------------------------------------- */
 .stats-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -194,15 +222,15 @@ ul { list-style: none; }
 }
 .stat-l {
   font-family: var(--mono);
-  font-size: .58rem;
+  font-size: .72rem;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--mut);
 }
 
-/* ═══════════════════════════════════════
+/* ---------------------------------------
    MARQUEE
-═══════════════════════════════════════ */
+--------------------------------------- */
 .marquee {
   background: var(--acc);
   overflow: hidden;
@@ -226,14 +254,14 @@ ul { list-style: none; }
   padding: .7rem 2rem;
 }
 
-/* ═══════════════════════════════════════
+/* ---------------------------------------
    SHARED PRIMITIVES
-═══════════════════════════════════════ */
+--------------------------------------- */
 .s-pad { padding: clamp(4rem, 9vw, 9rem) var(--g); }
 .s-eyebrow {
   display: inline-block;
   font-family: var(--mono);
-  font-size: .6rem;
+  font-size: .74rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--mut);
@@ -255,9 +283,9 @@ ul { list-style: none; }
 .s-head .acc { color: var(--acc); }
 .s-head-l { color: var(--bg); }
 
-/* ═══════════════════════════════════════
-   LEISTUNGEN — dark, editorial rows
-═══════════════════════════════════════ */
+/* ---------------------------------------
+   LEISTUNGEN � dark, editorial rows
+--------------------------------------- */
 #leistungen {
   background: var(--bg);
   color: var(--fg);
@@ -276,13 +304,13 @@ ul { list-style: none; }
 .svc-meta { display: flex; flex-direction: column; gap: .3rem; }
 .svc-num {
   font-family: var(--mono);
-  font-size: .6rem;
+  font-size: .74rem;
   letter-spacing: .1em;
   color: var(--mut);
 }
 .svc-phase {
   font-family: var(--mono);
-  font-size: .52rem;
+  font-size: .7rem;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: rgba(240,237,230,.2);
@@ -317,7 +345,7 @@ ul { list-style: none; }
 .svc-tags { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: flex-end; }
 .svc-tag {
   font-family: var(--mono);
-  font-size: .55rem;
+  font-size: .7rem;
   letter-spacing: .1em;
   text-transform: uppercase;
   padding: .3rem .8rem;
@@ -326,9 +354,9 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 
-/* ═══════════════════════════════════════
-   REFERENZEN — light, huge place names
-═══════════════════════════════════════ */
+/* ---------------------------------------
+   REFERENZEN � light, huge place names
+--------------------------------------- */
 #referenzen {
   background: var(--fg);
   color: var(--bg);
@@ -350,14 +378,14 @@ ul { list-style: none; }
 }
 .pi-idx, .pi-year, .pi-type {
   font-family: var(--mono);
-  font-size: .56rem;
+  font-size: .72rem;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: rgba(17,17,16,.38);
 }
 .pi-badge {
   font-family: var(--mono);
-  font-size: .54rem;
+  font-size: .7rem;
   letter-spacing: .1em;
   text-transform: uppercase;
   padding: .2rem .65rem;
@@ -375,15 +403,15 @@ ul { list-style: none; }
 .proj-item:hover .pi-place { color: rgba(17,17,16,.55); }
 .pi-sub {
   font-family: var(--mono);
-  font-size: .58rem;
+  font-size: .72rem;
   letter-spacing: .08em;
   color: rgba(17,17,16,.32);
   margin-top: .45rem;
 }
 
-/* ═══════════════════════════════════════
-   STATEMENT — full terracotta bleed
-═══════════════════════════════════════ */
+/* ---------------------------------------
+   STATEMENT � full terracotta bleed
+--------------------------------------- */
 .stmt-section {
   background: var(--acc);
   color: var(--fg);
@@ -402,15 +430,15 @@ ul { list-style: none; }
 }
 .stmt-src span {
   font-family: var(--mono);
-  font-size: .6rem;
+  font-size: .74rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(240,237,230,.55);
 }
 
-/* ═══════════════════════════════════════
-   STANDORTE — dark, grid cells
-═══════════════════════════════════════ */
+/* ---------------------------------------
+   STANDORTE � dark, grid cells
+--------------------------------------- */
 #standorte {
   background: var(--bg);
   color: var(--fg);
@@ -433,7 +461,7 @@ ul { list-style: none; }
 .study-cell:hover { background: rgba(196,85,58,.1); }
 .sc-n {
   font-family: var(--mono);
-  font-size: .56rem;
+  font-size: .72rem;
   letter-spacing: .14em;
   color: rgba(240,237,230,.25);
 }
@@ -445,15 +473,15 @@ ul { list-style: none; }
 }
 .sc-label {
   font-family: var(--mono);
-  font-size: .54rem;
+  font-size: .7rem;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--mut);
 }
 
-/* ═══════════════════════════════════════
-   KONTAKT — dark, email as display type
-═══════════════════════════════════════ */
+/* ---------------------------------------
+   KONTAKT � dark, email as display type
+--------------------------------------- */
 #kontakt {
   background: var(--bg);
   color: var(--fg);
@@ -497,7 +525,7 @@ ul { list-style: none; }
 .ki:first-of-type { border-top: 1px solid var(--bdr); }
 .ki-l {
   font-family: var(--mono);
-  font-size: .56rem;
+  font-size: .72rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--mut);
@@ -509,7 +537,7 @@ ul { list-style: none; }
 .fg { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.5rem; }
 .fl {
   font-family: var(--mono);
-  font-size: .56rem;
+  font-size: .72rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--mut);
@@ -546,9 +574,9 @@ ul { list-style: none; }
   color: var(--acc);
 }
 
-/* ═══════════════════════════════════════
+/* ---------------------------------------
    INTRO / LOADING SCREEN
-═══════════════════════════════════════ */
+--------------------------------------- */
 .intro {
   position: fixed;
   inset: 0;
@@ -620,7 +648,7 @@ ul { list-style: none; }
 }
 .intro-foot span {
   font-family: var(--mono);
-  font-size: .56rem;
+  font-size: .72rem;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: rgba(240,237,230,.22);
@@ -635,9 +663,9 @@ ul { list-style: none; }
   to   { width: 100%; }
 }
 
-/* ═══════════════════════════════════════
+/* ---------------------------------------
    FOOTER
-═══════════════════════════════════════ */
+--------------------------------------- */
 footer {
   padding: 2rem var(--g);
   border-top: 1px solid var(--bdr);
@@ -648,13 +676,13 @@ footer {
 .ft-logo { font-family: var(--disp); font-size: 1.4rem; letter-spacing: .05em; }
 .ft-logo em { font-style: normal; color: var(--acc); }
 .ft-copy {
-  font-family: var(--mono); font-size: .56rem;
+  font-family: var(--mono); font-size: .72rem;
   letter-spacing: .1em; text-transform: uppercase; color: var(--mut);
 }
 
-/* ═══════════════════════════════════════
+/* ---------------------------------------
    RESPONSIVE
-═══════════════════════════════════════ */
+--------------------------------------- */
 @media (max-width: 1100px) {
   .studies-grid { grid-template-columns: repeat(3, 1fr); }
 }

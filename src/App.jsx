@@ -211,13 +211,16 @@ export default function App() {
       )}
       {/* ── NAV ── */}
       <nav className="nav">
-        <a href="#" className="nav-logo">NN<em>.</em></a>
+        <div className="nav-brand">
+          <a href="#" className="nav-logo">NN<em>.</em></a>
+          <span className="nav-brand-sub">Architektur</span>
+        </div>
         <ul className="nav-links">
-          <li><a href="#leistungen">Leistungen</a></li>
-          <li><a href="#referenzen">Referenzen</a></li>
-          <li><a href="#standorte">Standorte</a></li>
+          <li><a href="#leistungen"><span className="nav-link-num">01</span>Leistungen</a></li>
+          <li><a href="#referenzen"><span className="nav-link-num">02</span>Referenzen</a></li>
+          <li><a href="#standorte"><span className="nav-link-num">03</span>Standorte</a></li>
         </ul>
-        <a href="#kontakt" className="nav-cta">Kontakt</a>
+        <a href="#kontakt" className="nav-cta">Kontakt &rarr;</a>
       </nav>
 
       {/* ── HERO — SPLIT SCREEN ── */}
