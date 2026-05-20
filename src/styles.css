@@ -155,23 +155,7 @@ ul { list-style: none; }
   padding: 5.5rem var(--g) 3rem 3rem;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  position: relative;
-  overflow: hidden;
 }
-.hero-r-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .09;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  -webkit-user-select: none;
-  user-select: none;
-  z-index: 0;
-}
-.hero-r > *:not(.hero-r-bg) { position: relative; z-index: 1; }
 .hr-eyebrow {
   font-family: var(--mono);
   font-size: .62rem;
@@ -384,25 +368,9 @@ ul { list-style: none; }
   border-top: 1px solid var(--bdr-l);
   transition: padding-left .3s var(--ease);
   cursor: default;
-  position: relative;
-  overflow: hidden;
 }
 .proj-item:last-child { border-bottom: 1px solid var(--bdr-l); }
 .proj-item:hover { padding-left: .6rem; }
-.pi-thumb {
-  position: absolute;
-  top: 2rem;
-  right: 0;
-  width: 170px;
-  height: 115px;
-  object-fit: cover;
-  opacity: .6;
-  transition: opacity .35s var(--ease), transform .4s var(--ease);
-}
-.proj-item:hover .pi-thumb {
-  opacity: .95;
-  transform: scale(1.03);
-}
 .pi-top {
   display: flex; align-items: center;
   gap: 1.2rem; flex-wrap: wrap;
@@ -469,7 +437,7 @@ ul { list-style: none; }
 }
 
 /* ---------------------------------------
-   STANDORTE — dark, image card grid
+   STANDORTE — dark, card grid
 --------------------------------------- */
 #standorte {
   background: var(--bg);
@@ -478,59 +446,74 @@ ul { list-style: none; }
 .studies-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2px;
+  gap: 1px;
+  background: var(--bdr);
   padding-bottom: clamp(4rem, 9vw, 9rem);
 }
 .study-card {
+  background: var(--bg);
   position: relative;
   overflow: hidden;
-  aspect-ratio: 9 / 14;
+  aspect-ratio: 9 / 13;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: background .3s var(--ease);
 }
-.study-card-img {
+.study-card:hover { background: #131313; }
+.study-card:hover .sc-place { color: var(--acc); }
+.study-card::after {
+  content: '';
   position: absolute;
-  inset: 0;
+  bottom: 0; left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .7s var(--ease), filter .5s;
-  filter: brightness(.52) saturate(.65);
+  height: 3px;
+  background: var(--acc);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s var(--ease);
 }
-.study-card:hover .study-card-img {
-  transform: scale(1.06);
-  filter: brightness(.32) saturate(.65);
-}
-.study-card-grad {
+.study-card:hover::after { transform: scaleX(1); }
+.sc-ghost {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(12,12,12,.92) 0%, rgba(12,12,12,.22) 50%, transparent 80%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-family: var(--disp);
+  font-size: clamp(5rem, 9vw, 12rem);
+  color: rgba(240,237,230,.04);
+  letter-spacing: .02em;
+  line-height: 1;
   pointer-events: none;
+  transition: color .3s;
 }
+.study-card:hover .sc-ghost { color: rgba(196,85,58,.07); }
 .study-card-body {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 1.75rem 1.25rem;
+  position: relative;
+  padding: 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   gap: .4rem;
 }
 .sc-n {
   font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .14em;
-  color: rgba(240,237,230,.35);
+  font-size: .68rem;
+  letter-spacing: .16em;
+  color: rgba(240,237,230,.28);
 }
 .sc-place {
   font-family: var(--disp);
-  font-size: clamp(1.3rem, 1.7vw, 2.4rem);
+  font-size: clamp(1.1rem, 1.6vw, 2rem);
   letter-spacing: .03em;
   line-height: 1;
+  transition: color .3s var(--ease);
 }
 .sc-label {
   font-family: var(--mono);
-  font-size: .66rem;
+  font-size: .62rem;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: rgba(240,237,230,.45);
+  color: rgba(240,237,230,.32);
 }
 
 /* ---------------------------------------
@@ -774,8 +757,6 @@ footer {
   .nav-links { display: none; }
   /* Studies */
   .studies-grid { grid-template-columns: repeat(2, 1fr); }
-  /* Referenzen thumbnails */
-  .pi-thumb { display: none; }
 }
 
 @media (max-width: 560px) {

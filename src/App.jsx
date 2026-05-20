@@ -25,26 +25,20 @@ const SERVICES = [
 ]
 
 const PROJECTS = [
-  { idx: '001', year: '2024–25', place: 'Neuenegg', type: 'Ausführungsplanung', sub: 'Überbauung', active: true,
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=480&q=70&auto=format&fit=crop' },
-  { idx: '002', year: '2024',    place: 'Buus',     type: 'Baueingabe',         sub: 'Sanierung MFH',
-    img: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=480&q=70&auto=format&fit=crop' },
-  { idx: '003', year: '2024',    place: 'Altwis',   type: 'Baueingabe',         sub: 'Umgebungsgestaltung · Hanglage',
-    img: 'https://images.unsplash.com/photo-1493397212122-2b85dda8106b?w=480&q=70&auto=format&fit=crop' },
-  { idx: '004', year: '2023',    place: 'Root',     type: 'Baueingabe',         sub: 'Planung Wintergarten EFH',
-    img: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=480&q=70&auto=format&fit=crop' },
-  { idx: '005', year: '2023',    place: 'Döttigen', type: 'Machbarkeitsstudie', sub: 'Standortanalyse',
-    img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=480&q=70&auto=format&fit=crop' },
-  { idx: '006', year: '2023',    place: 'Eglisau',  type: 'Machbarkeitsstudie', sub: 'Standortanalyse',
-    img: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=480&q=70&auto=format&fit=crop' },
+  { idx: '001', year: '2024–25', place: 'Neuenegg', type: 'Ausführungsplanung', sub: 'Überbauung', active: true },
+  { idx: '002', year: '2024',    place: 'Buus',     type: 'Baueingabe',         sub: 'Sanierung MFH' },
+  { idx: '003', year: '2024',    place: 'Altwis',   type: 'Baueingabe',         sub: 'Umgebungsgestaltung · Hanglage' },
+  { idx: '004', year: '2023',    place: 'Root',     type: 'Baueingabe',         sub: 'Planung Wintergarten EFH' },
+  { idx: '005', year: '2023',    place: 'Döttigen', type: 'Machbarkeitsstudie', sub: 'Standortanalyse' },
+  { idx: '006', year: '2023',    place: 'Eglisau',  type: 'Machbarkeitsstudie', sub: 'Standortanalyse' },
 ]
 
 const STUDIES = [
-  { n: '01', place: 'Döttigen',    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=75&auto=format&fit=crop' },
-  { n: '02', place: 'Wohlen',      img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa12c00?w=800&q=75&auto=format&fit=crop' },
-  { n: '03', place: 'Wil AG',      img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75&auto=format&fit=crop' },
-  { n: '04', place: 'Ehrendingen', img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=75&auto=format&fit=crop' },
-  { n: '05', place: 'Eglisau',     img: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=75&auto=format&fit=crop' },
+  { n: '01', place: 'Döttigen' },
+  { n: '02', place: 'Wohlen' },
+  { n: '03', place: 'Wil AG' },
+  { n: '04', place: 'Ehrendingen' },
+  { n: '05', place: 'Eglisau' },
 ]
 
 const MARQUEE_ITEMS = [
@@ -250,7 +244,6 @@ export default function App() {
 
         {/* Right — headline panel */}
         <div className="hero-r">
-          <img className="hero-r-bg" src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=1200&q=60&auto=format&fit=crop" alt="" aria-hidden="true" loading="eager" />
           <p className="hr-eyebrow">— Schweizweit tätig seit 2020</p>
           <h1 className="hr-title">
             Von der<br />
@@ -333,7 +326,6 @@ export default function App() {
             {PROJECTS.map((p, i) => (
               <Rv key={p.idx} delay={i * 55}>
                 <div className="proj-item">
-                  <img className="pi-thumb" src={p.img} alt={p.place} loading="lazy" />
                   <div className="pi-top">
                     <span className="pi-idx">{p.idx}</span>
                     <span className="pi-year">{p.year}</span>
@@ -381,8 +373,7 @@ export default function App() {
         <div className="studies-grid">
           {STUDIES.map((s, i) => (
             <div key={s.place} className="study-card">
-              <img className="study-card-img" src={s.img} alt={s.place} loading="lazy" />
-              <div className="study-card-grad" />
+              <span className="sc-ghost">{s.n}</span>
               <div className="study-card-body">
                 <span className="sc-n">{s.n}</span>
                 <span className="sc-place">{s.place}</span>
