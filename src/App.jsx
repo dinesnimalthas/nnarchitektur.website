@@ -78,7 +78,43 @@ function Rv({ children, delay = 0, as: Tag = 'div', className = '', ...rest }) {
   )
 }
 
-/* ── ACCORDION — CSS grid, no JS height ── */
+/* ── STATNUM — count-up animation ── */
+function StatNum({ val }) {
+  const ref = useRef(null)
+  const num = parseInt(val, 10)
+  const [display, setDisplay] = useState(isNaN(num) ? val : '00')
+  useEffect(() => {
+    if (isNaN(num)) return
+    const el = ref.current; if (!el) return
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return; io.disconnect()
+      const dur = 1100, t0 = performance.now()
+      const tick = now => {
+        const p = Math.min((now - t0) / dur, 1)
+        setDisplay(String(Math.round(p * num)).padStart(2, '0'))
+        if (p < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }, { threshold: 0.6 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [num])
+  return <span ref={ref} className="stat-n">{display}</span>
+}
+
+/* ── useActiveSection ── */
+function useActiveSection(ids) {
+  const [active, setActive] = useState('')
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) }),
+      { threshold: 0.2, rootMargin: '-10% 0px -60% 0px' }
+    )
+    ids.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el) })
+    return () => io.disconnect()
+  }, [])
+  return active
+}
 function SvcItem({ item, open, onToggle }) {
   return (
     <div className={`svc-item${open ? ' open' : ''}`}>
@@ -198,6 +234,7 @@ export default function App() {
   const [openSvc, setOpenSvc] = useState(null)
   const [introDone, setIntroDone] = useState(false)
   const [introOut, setIntroOut] = useState(false)
+  const active = useActiveSection(['leistungen', 'referenzen', 'standorte', 'kontakt'])
 
   function handleIntroDone() {
     setIntroOut(true)
@@ -216,9 +253,9 @@ export default function App() {
           <span className="nav-brand-sub">Architektur</span>
         </div>
         <ul className="nav-links">
-          <li><a href="#leistungen"><span className="nav-link-num">01</span>Leistungen</a></li>
-          <li><a href="#referenzen"><span className="nav-link-num">02</span>Referenzen</a></li>
-          <li><a href="#standorte"><span className="nav-link-num">03</span>Standorte</a></li>
+          <li><a href="#leistungen" className={active === 'leistungen' ? 'active' : ''}><span className="nav-link-num">01</span>Leistungen</a></li>
+          <li><a href="#referenzen" className={active === 'referenzen' ? 'active' : ''}><span className="nav-link-num">02</span>Referenzen</a></li>
+          <li><a href="#standorte" className={active === 'standorte' ? 'active' : ''}><span className="nav-link-num">03</span>Standorte</a></li>
         </ul>
         <a href="#kontakt" className="nav-cta">Kontakt &rarr;</a>
       </nav>
@@ -271,7 +308,7 @@ export default function App() {
           ['CH', 'Schweizweit'],
         ].map(([n, l]) => (
           <div key={l} className="stat">
-            <span className="stat-n">{n}</span>
+            <StatNum val={n} />
             <span className="stat-l">{l}</span>
           </div>
         ))}
@@ -372,14 +409,14 @@ export default function App() {
         </div>
         <div className="studies-grid">
           {STUDIES.map((s, i) => (
-            <div key={s.place} className="study-card">
+            <Rv key={s.place} delay={i * 90} className="study-card">
               <span className="sc-ghost">{s.n}</span>
               <div className="study-card-body">
                 <span className="sc-n">{s.n}</span>
                 <span className="sc-place">{s.place}</span>
                 <span className="sc-label">Standortanalyse</span>
               </div>
-            </div>
+            </Rv>
           ))}
         </div>
       </section>

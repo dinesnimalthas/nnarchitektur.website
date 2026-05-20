@@ -81,8 +81,23 @@ ul { list-style: none; }
   align-items: center;
   gap: .5rem;
   transition: color .2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s var(--ease);
 }
 .nav-links a:hover { color: var(--fg); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--fg); }
+.nav-links a.active::after { transform: scaleX(1); background: var(--acc); }
+.nav-links a.active .nav-link-num { opacity: 1; }
 .nav-link-num {
   font-size: .72rem;
   color: var(--acc);
@@ -269,10 +284,25 @@ ul { list-style: none; }
   border-bottom: 1px solid var(--bdr);
   margin-bottom: 3rem;
 }
+.s-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1px;
+  background: var(--acc);
+  vertical-align: middle;
+  margin-right: 0;
+  transition: width .55s var(--ease) .1s, margin-right .55s var(--ease) .1s;
+}
+.rv-v .s-eyebrow::before {
+  width: 1.6rem;
+  margin-right: .6rem;
+}
 .s-eyebrow-l {
   color: rgba(17,17,16,.38);
   border-color: var(--bdr-l);
 }
+.rv-v .s-eyebrow-l::before { background: rgba(17,17,16,.35); }
 .s-head {
   font-family: var(--disp);
   font-size: clamp(2.5rem, 6vw, 7rem);
@@ -389,7 +419,7 @@ ul { list-style: none; }
   letter-spacing: .1em;
   text-transform: uppercase;
   padding: .2rem .65rem;
-  background: var(--bg);
+  border: 1px solid var(--acc);
   color: var(--acc);
 }
 .pi-place {
