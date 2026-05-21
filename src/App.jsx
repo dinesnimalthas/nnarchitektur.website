@@ -383,26 +383,26 @@ export default function App() {
           </Rv>
         </div>
         <div style={{ padding: '0 var(--g) clamp(4rem,9vw,9rem)' }}>
-          <div className="proj-list">
+          <div className="proj-grid">
             {PROJECTS.map((p, i) => (
-              <Rv key={p.idx} delay={i * 55}>
-                <div className="proj-item">
-                  <div className="pi-content">
-                    <div className="pi-top">
+              <Rv key={p.idx} delay={i * 60}>
+                <div className="proj-card">
+                  <div className="pc-img">
+                    {p.img
+                      ? <img src={p.img} alt={`${p.place} – ${p.sub}`} />
+                      : <span className="pc-img-ghost">{p.idx}</span>
+                    }
+                    <span className="pc-place">{p.place}</span>
+                  </div>
+                  <div className="pc-body">
+                    <div className="pc-meta">
                       <span className="pi-idx">{p.idx}</span>
                       <span className="pi-year">{p.year}</span>
                       <span className="pi-type">{p.type}</span>
                       {p.active && <span className="pi-badge">Aktuell</span>}
                     </div>
-                    <span className="pi-place">{p.place}</span>
-                    <div className="pi-sub">{p.sub}</div>
-                    {p.desc && <p className="pi-desc">{p.desc}</p>}
-                  </div>
-                  <div className="pi-img">
-                    {p.img
-                      ? <img src={p.img} alt={`${p.place} – ${p.sub}`} />
-                      : <span className="pi-img-ghost">{p.idx}</span>
-                    }
+                    <div className="pc-sub">{p.sub}</div>
+                    {p.desc && <p className="pc-desc">{p.desc}</p>}
                   </div>
                 </div>
               </Rv>
