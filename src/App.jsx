@@ -25,12 +25,36 @@ const SERVICES = [
 ]
 
 const PROJECTS = [
-  { idx: '001', year: '2024–25', place: 'Neuenegg', type: 'Ausführungsplanung', sub: 'Überbauung', active: true },
-  { idx: '002', year: '2024',    place: 'Buus',     type: 'Baueingabe',         sub: 'Sanierung MFH' },
-  { idx: '003', year: '2024',    place: 'Altwis',   type: 'Baueingabe',         sub: 'Umgebungsgestaltung · Hanglage' },
-  { idx: '004', year: '2023',    place: 'Root',     type: 'Baueingabe',         sub: 'Planung Wintergarten EFH' },
-  { idx: '005', year: '2023',    place: 'Doettigen', type: 'Machbarkeitsstudie', sub: 'Standortanalyse' },
-  { idx: '006', year: '2023',    place: 'Eglisau',  type: 'Machbarkeitsstudie', sub: 'Standortanalyse' },
+  {
+    idx: '001', year: '2024–25', place: 'Neuenegg', type: 'Ausführungsplanung', sub: 'Überbauung', active: true,
+    desc: 'Vollständige Ausführungsplanung für eine mehrgeschossige Wohnüberbauung. Koordination aller Gewerke, masshaltige Pläne und Detailausarbeitungen für den laufenden Baubetrieb.',
+    img: null,
+  },
+  {
+    idx: '002', year: '2024', place: 'Buus', type: 'Baueingabe', sub: 'Sanierung MFH',
+    desc: 'Baueingabe für die Gesamtsanierung eines Mehrfamilienhauses. Konzept zur energetischen Optimierung der Gebäudehülle mit Beibehaltung des bestehenden Grundrisses.',
+    img: null,
+  },
+  {
+    idx: '003', year: '2024', place: 'Altwis', type: 'Baueingabe', sub: 'Umgebungsgestaltung · Hanglage',
+    desc: 'Planung und Baueingabe für die Neugestaltung des Aussenraums in anspruchsvoller Hanglage. Terrassierung, Stützmauern und Wegführung als gestalterische Einheit.',
+    img: null,
+  },
+  {
+    idx: '004', year: '2023', place: 'Root', type: 'Baueingabe', sub: 'Planung Wintergarten EFH',
+    desc: 'Erweiterung eines Einfamilienhauses durch einen verglasten Wintergarten. Baueingabe inkl. statischer Vorbereitung und Abstimmung mit dem kantonalen Bauamt.',
+    img: null,
+  },
+  {
+    idx: '005', year: '2023', place: 'Doettigen', type: 'Machbarkeitsstudie', sub: 'Standortanalyse',
+    desc: 'Analyse der baulichen Nutzungspotenziale einer Parzelle in der Gemeinde Doettigen. Prüfung der Zonenkonformität, Ausnützungsziffer und wirtschaftlicher Szenarien.',
+    img: null,
+  },
+  {
+    idx: '006', year: '2023', place: 'Eglisau', type: 'Machbarkeitsstudie', sub: 'Standortanalyse',
+    desc: 'Standortanalyse für ein Wohnbauprojekt in Eglisau. Beurteilung der topografischen Besonderheiten sowie der planungsrechtlichen Rahmenbedingungen.',
+    img: null,
+  },
 ]
 
 const STUDIES = [
@@ -363,14 +387,23 @@ export default function App() {
             {PROJECTS.map((p, i) => (
               <Rv key={p.idx} delay={i * 55}>
                 <div className="proj-item">
-                  <div className="pi-top">
-                    <span className="pi-idx">{p.idx}</span>
-                    <span className="pi-year">{p.year}</span>
-                    <span className="pi-type">{p.type}</span>
-                    {p.active && <span className="pi-badge">Aktuell</span>}
+                  <div className="pi-content">
+                    <div className="pi-top">
+                      <span className="pi-idx">{p.idx}</span>
+                      <span className="pi-year">{p.year}</span>
+                      <span className="pi-type">{p.type}</span>
+                      {p.active && <span className="pi-badge">Aktuell</span>}
+                    </div>
+                    <span className="pi-place">{p.place}</span>
+                    <div className="pi-sub">{p.sub}</div>
+                    {p.desc && <p className="pi-desc">{p.desc}</p>}
                   </div>
-                  <span className="pi-place">{p.place}</span>
-                  <div className="pi-sub">{p.sub}</div>
+                  <div className="pi-img">
+                    {p.img
+                      ? <img src={p.img} alt={`${p.place} – ${p.sub}`} />
+                      : <span className="pi-img-ghost">{p.idx}</span>
+                    }
+                  </div>
                 </div>
               </Rv>
             ))}
