@@ -10,8 +10,8 @@
   --dark:  #0E1C30;          /* tiefes Nachtblau – Statement-Block */
   --fg:    #1A1714;          /* warmes Anthrazit – Haupt­text */
   --acc:   #4A7AB5;          /* Stahlblau – Akzent­farbe */
-  --dim:   rgba(26,23,20,.55);
-  --mut:   rgba(26,23,20,.38);
+  --dim:   rgba(26,23,20,.62);
+  --mut:   rgba(26,23,20,.50);
   --bdr:   rgba(26,23,20,.10);
   --bdr-l: rgba(26,23,20,.08);
   /* Variablen für den dunklen Statement-Block */
@@ -172,7 +172,7 @@ ul { list-style: none; }
   font-size: .74rem;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(26,23,20,.30);
+  color: rgba(26,23,20,.45);
   line-height: 2.1;
 }
 
@@ -365,7 +365,7 @@ ul { list-style: none; }
   font-size: .7rem;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(26,23,20,.22);
+  color: rgba(26,23,20,.42);
 }
 .svc-name {
   font-family: var(--disp);
