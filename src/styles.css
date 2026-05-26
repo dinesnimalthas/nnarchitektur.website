@@ -7,9 +7,9 @@
   --bg:    #F4F0EA;          /* warmes Leinen – Haupt­hintergrund */
   --bg2:   #EAE5DC;          /* warmer Stein – wechselnde Sections */
   --bg3:   #FDFAF6;          /* Fast-Weiß – Highlights & Karten */
-  --dark:  #182920;          /* tiefes Waldgrün – Statement-Block */
+  --dark:  #0E1C30;          /* tiefes Nachtblau – Statement-Block */
   --fg:    #1A1714;          /* warmes Anthrazit – Haupt­text */
-  --acc:   #3B6847;          /* Waldgrün – Akzent­farbe */
+  --acc:   #4A7AB5;          /* Stahlblau – Akzent­farbe */
   --dim:   rgba(26,23,20,.55);
   --mut:   rgba(26,23,20,.38);
   --bdr:   rgba(26,23,20,.10);
@@ -344,7 +344,7 @@ ul { list-style: none; }
   border-top: 1px solid var(--bdr);
   transition: background .3s;
 }
-.svc-item.open { background: rgba(59,104,71,.04); }
+.svc-item.open { background: rgba(74,122,181,.05); }
 .svc-btn {
   width: 100%; background: none; border: none; cursor: pointer;
   color: inherit; text-align: left;
@@ -597,7 +597,7 @@ ul { list-style: none; }
   pointer-events: none;
   transition: color .3s;
 }
-.study-card:hover .sc-ghost { color: rgba(59,104,71,.09); }
+.study-card:hover .sc-ghost { color: rgba(74,122,181,.09); }
 .study-card-body {
   position: relative;
   padding: 1.5rem 1.25rem;
@@ -713,7 +713,7 @@ ul { list-style: none; }
   border: none; cursor: pointer;
   transition: background .2s;
 }
-.f-btn:hover:not(:disabled) { background: #2d5239; }
+.f-btn:hover:not(:disabled) { background: #3A68A0; }
 .f-btn:disabled { opacity: .4; cursor: not-allowed; }
 .f-ok {
   padding: 1.5rem;
